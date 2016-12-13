@@ -1,0 +1,21 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "compress": "^0.99.0",
+    "cookies": "^0.6.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "md5": "^2.2.1",
+    "moment": "^2.17.1"
+  }
+}

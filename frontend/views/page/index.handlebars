@@ -1,0 +1,38 @@
+{{>navbar}}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+{{#if session}}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Välkommen!</h1>
+            <p>Bara tuta och köra!</p>
+        </div>
+    </div>
+{{else}}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Tjabba!</h1>
+        <p>Här hittar du signup för att börja använda tjänsten.</p>
+        <p><a class="btn btn-primary btn-lg" href="/account/signup" role="button">Skapa konto &raquo;</a></p>
+    </div>
+</div>
+{{/if}}
+
+{{#if session}}
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Förare</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="/driver" role="button">Jag vill köra &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+            <h2>Passagerare</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="/passenger" role="button">Jag vill hänga på &raquo;</a></p>
+        </div>
+    </div>
+</div> <!-- /container -->
+{{else}}
+{{/if}}

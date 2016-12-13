@@ -1,0 +1,38 @@
+{
+	"apps" : [
+		{
+			"name"        : "account",
+			"script"      : "index.js",
+			"cwd"         : "account",
+			"watch"       : true,
+			"env": {
+				"NODE_ENV": "development",
+				"LOG_LEVEL": "info",
+				"PORT": 8080
+			}
+		},
+		{
+			"name"        : "share",
+			"script"      : "index.js",
+			"cwd"         : "share",
+			"watch"       : true,
+			"env": {
+				"NODE_ENV": "development",
+				"LOG_LEVEL": "info",
+				"PORT": 8081
+			}
+		},
+		{
+			"name"        : "frontend",
+			"script"      : "index.js",
+			"cwd"         : "frontend",
+			"watch"       : true,
+			"env": {
+				"NODE_ENV": "development",
+				"ignore_watch": "uploads views public",
+				"LOG_LEVEL": "info",
+				"PORT": 9000
+			}
+		}
+	]
+}
