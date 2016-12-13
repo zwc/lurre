@@ -12,9 +12,9 @@
 			}
 		},
 		{
-			"name"        : "share",
+			"name"        : "backend",
 			"script"      : "index.js",
-			"cwd"         : "share",
+			"cwd"         : "backend",
 			"watch"       : true,
 			"env": {
 				"NODE_ENV": "development",
@@ -27,9 +27,9 @@
 			"script"      : "index.js",
 			"cwd"         : "frontend",
 			"watch"       : true,
+			"ignore_watch": "uploads views public",
 			"env": {
 				"NODE_ENV": "development",
-				"ignore_watch": "uploads views public",
 				"LOG_LEVEL": "info",
 				"PORT": 9000
 			}

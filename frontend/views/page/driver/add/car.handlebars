@@ -1,0 +1,39 @@
+{{>navbar}}
+
+<div class="container" role="main">
+    <div class="page-header">
+        <h1>Nytt åk</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="container">
+                <form method="POST" action="/driver/create/car">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Namn</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="name" id="name" placeholder="Namn på bilen">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Platser framsäte</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="seatsForward" id="seatsForward" placeholder="Antal platser fram">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Platser baksäte</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="seatsBack" id="seatsBack" placeholder="Antal platser i baksätet">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                            <div class="btn btn-danger" onClick="window.location.href='/driver'">Avbryt</div>
+                            <button type="submit" class="btn btn-primary">Skapa</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

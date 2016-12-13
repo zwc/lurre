@@ -10,6 +10,14 @@ module.exports = (app) => {
 
 	// Driver
 	app.get('/driver', driverController.index);
+	app.get('/driver/add/car', driverController.car);
+	app.get('/driver/add/place', driverController.place);
+	app.get('/driver/add/time', driverController.time);
+
+	// Driver::Backend
+	app.post('/driver/create/place', driverController.createPlace);
+	app.post('/driver/create/time', driverController.createTime);
+	app.post('/driver/create/car', driverController.createCar);
 
 	// Passenger
 	app.get('/passenger', passengerController.index);

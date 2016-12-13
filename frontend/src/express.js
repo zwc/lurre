@@ -6,8 +6,6 @@ const bodyParser = require('body-parser');
 const compress = require('compression');
 const moment = require('moment');
 const session = require('./middleware/session');
-//const encoder = require('./util/encoder');
-//const sessionMiddleware = require('./middleware/session');
 
 expressApp.disable('x-powered-by');
 expressApp.use(express.static('public'));
@@ -28,7 +26,7 @@ const hbs = exphbs.create({
 		date: (value) => {
 			return moment(value).format('YYYY-MM-DD');
 		},
-		time: (value) => {
+		moment: (value) => {
 			return moment().to(value);
 		},
 		ellipsis: (data) => {
@@ -50,8 +48,6 @@ const hbs = exphbs.create({
 });
 
 expressApp.engine('handlebars', hbs.engine);
-
-//expressApp.use(sessionMiddleware);
 
 expressApp.set('view engine', 'handlebars');
 expressApp.set('views', __dirname + '/../views');
