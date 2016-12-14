@@ -18,9 +18,11 @@ module.exports = (app) => {
 	app.post('/driver/create/place', driverController.createPlace);
 	app.post('/driver/create/time', driverController.createTime);
 	app.post('/driver/create/car', driverController.createCar);
+	app.post('/driver/create', driverController.create);
 
 	// Passenger
 	app.get('/passenger', passengerController.index);
+	app.post('/passenger/create', passengerController.create);
 
 	// Account
 	app.get('/account/login', accountController.signin);

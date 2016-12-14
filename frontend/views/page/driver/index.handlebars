@@ -1,7 +1,6 @@
 {{>navbar}}
 
 <div class="container theme-showcase" role="main">
-
     <div class="page-header">
         <h1>Vars blir det av?</h1>
     </div>
@@ -9,7 +8,7 @@
         <div class="col-sm-4" id="driver-places" style="margin-bottom: 16px;">
             <div class="list-group">
                 {{#'/place/list'}}
-                <a href="#" class="list-group-item">
+                <a href="#" class="list-group-item" data-id="{{guid}}">
                     <h4 class="list-group-item-heading">{{name}}</h4>
                     <p class="list-group-item-text">Pizza 100 sek</p>
                 </a>
@@ -20,7 +19,7 @@
         <div class="col-sm-4" id="driver-times" style="display: none; margin-bottom: 16px;">
             <div class="list-group">
                 {{#'/time/list'}}
-                <a href="#" class="list-group-item">
+                <a href="#" class="list-group-item" data-id="{{guid}}">
                     <h4 class="list-group-item-heading">{{time}}</h4>
                 </a>
                 {{/'/time/list'}}
@@ -30,7 +29,7 @@
         <div class="col-sm-4" id="driver-cars" style="display: none; margin-bottom: 16px;">
             <div class="list-group">
                 {{#'/car/list'}}
-                <a href="#" class="list-group-item">
+                <a href="#" class="list-group-item" data-id="{{guid}}">
                     <h4 class="list-group-item-heading">{{name}}</h4>
                     <p class="list-group-item-text">{{seatsForward}} plats fram, {{seatsBack}} platser bak</p>
                 </a>
@@ -44,7 +43,12 @@
             <h1>Gå vidare</h1>
         </div>
         <p>
-            <button type="button" class="btn btn-lg btn-success">Kör på ba!</button>
+            <form id="create" method="POST" action="/driver/create">
+                <input type="hidden" id="create-place" class="place" name="place" value="" />
+                <input type="hidden" id="create-time" class="time" name="time" value="" />
+                <input type="hidden" id="create-car" class="car" name="car" value="" />
+                <button id="drive" type="button" class="btn btn-lg btn-success">Kör på ba!</button>
+            </form>
         </p>
     </div>
 </div>

@@ -33,6 +33,15 @@ module.exports = {
 	time: (req, res) => {
 		res.render('page/driver/add/time');
 	},
+	create: (req, res) => {
+		const email = res.locals.session;
+		const place = req.body.place;
+		const time = req.body.time;
+		const car = req.body.car;
+		request.post({url: `http://localhost:8081/driver`, form: { email, place, time, car }, json: true}, (err) => {
+			res.redirect('/');
+		});
+	},
 	createPlace: (req, res) => {
 		const email = res.locals.session;
 		const name = req.body.name;
