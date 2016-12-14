@@ -12,9 +12,15 @@ module.exports = {
 	},
 	create: (req, res) => {
 		const email = res.locals.session;
-		const place = req.body.place;
+		const guid = req.body.guid;
 		const seat = req.body.seat;
-		request.post({url: `http://localhost:8081/passenger`, form: { email, place, seat }, json: true}, (err) => {
+		request.post({url: `http://localhost:8081/passenger`, form: { email, guid, seat }, json: true}, (err) => {
+			res.redirect('/');
+		});
+	},
+	cancel: (req, res) => {
+		const email = res.locals.session;
+		request({method: 'delete', url: `http://localhost:8081/passenger`, form: { email }, json: true}, (err) => {
 			res.redirect('/');
 		});
 	}

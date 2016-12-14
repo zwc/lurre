@@ -1,0 +1,20 @@
+{{>navbar}}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+{{#if driver}}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Du ska köra!</h1>
+            <p>Det bär av till {{driver.place.name}} kl {{driver.time.time}}, du har X passagerare.</p>
+        </div>
+    </div>
+{{/if}}
+{{#if passenger}}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Du ska åka!</h1>
+        <p>Du ska med och åka till X klockan Y.</p>
+        <p><a class="btn btn-primary btn-lg" href="/passenger/cancel" role="button">Ångra &raquo;</a></p>
+    </div>
+</div>
+{{/if}}

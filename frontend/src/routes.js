@@ -23,6 +23,7 @@ module.exports = (app) => {
 	// Passenger
 	app.get('/passenger', passengerController.index);
 	app.post('/passenger/create', passengerController.create);
+	app.get('/passenger/cancel', passengerController.cancel);
 
 	// Account
 	app.get('/account/login', accountController.signin);

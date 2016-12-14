@@ -46,8 +46,7 @@ module.exports = {
 		const email = res.locals.session;
 		const name = req.body.name;
 		const description = req.body.description;
-		const type = req.body.type;
-		request.post({url: `http://localhost:8081/place/create`, form: { email, name, description, type }, json: true}, (err) => {
+		request.post({url: `http://localhost:8081/place/create`, form: { email, name, description }, json: true}, (err) => {
 			res.redirect('/driver');
 		});
 	},
