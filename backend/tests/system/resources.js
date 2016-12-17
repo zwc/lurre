@@ -32,6 +32,19 @@ describe('resources', () => {
 					done();
 				});
 		});
+		it('should be able to register a time again', (done) => {
+			request.post('/time/create')
+				.send({
+					email: 'driver@test.com',
+					time: '20:00',
+					guid: 'autotest-time20'
+				})
+				.expect(200)
+				.end((err, res) => {
+					expect(res.body.success).to.equal(true);
+					done();
+				});
+		});
 		it('should be able to register a car', (done) => {
 			request.post('/car/create')
 				.send({

@@ -22,7 +22,7 @@ $( document ).ready(function() {
 		$(this).addClass('active');
 
 		// fill out form
-		$('#create .place').val($('#tours .list-group-item.active').attr('data-id'));
+		$('#create .guid').val($('#tours .list-group-item.active').attr('data-id'));
 		$('#create .seat').val($('#seats .list-group-item.active').attr('data-id'));
 
 		$('#go').show();

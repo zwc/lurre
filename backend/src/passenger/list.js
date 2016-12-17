@@ -25,11 +25,30 @@ const list = (req, res) => {
 		})
 		.apply(response => {
 			const guid = _.get(response, 'driver.guid') || _.get(response, 'passenger.guid');
-			getPassengersByGuid(guid)
-				.apply(passengers => {
-					response.passengers = passengers;
-					res.json(response);
-				});
+
+			// If it's a passenger, I must get the driver's info as well
+			if(response.passenger) {
+				H([`lurre:driver:${guid}:*`])
+					.flatMap(client.keys)
+					.flatMap(H)
+					.flatMap(client.getKey)
+					.apply(driver => {
+						if(driver) {
+							response.driver = driver['driver'];
+						}
+						getPassengersByGuid(guid)
+							.apply(passengers => {
+								response.passengers = passengers;
+								res.json(response);
+							});
+					});
+			} else {
+				getPassengersByGuid(guid)
+					.apply(passengers => {
+						response.passengers = passengers;
+						res.json(response);
+					});
+			}
 		});
 };
 

@@ -1,5 +1,6 @@
 const H = require('highland');
 const _ = require('lodash');
+const moment = require('moment');
 const express = require('express');
 const bodyParser = require('body-parser');
 const redis = require('redis');
@@ -45,9 +46,20 @@ app.post('/driver', (req, res) => {
 		})
 		.apply(data => {
 			data.guid = guid;
-			client.set(`lurre:driver:${guid}:${email}`, JSON.stringify(data), (err) => {
-				res.json({ success: !!!err });
-			});
+			const time = _.get(data, 'time.time');
+			const date = `${moment().format('YYYY-MM-DD')} ${time}:00+02:00`;
+			const expires = moment(date).format('x');
+			const TTL = Math.floor(moment(date).diff(moment()) / 1000);
+			const key = `lurre:driver:${guid}:${email}`;
+			if(TTL > 0) {
+				client.expire(key, TTL);
+				data.time.date = date;
+				client.set(key, JSON.stringify(data), (err) => {
+					res.json({ success: !!!err });
+				});
+			} else {
+				res.json({ success: false, error: 'Time already expired' });
+			}
 		});
 });
 

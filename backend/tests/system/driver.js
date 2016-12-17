@@ -9,7 +9,7 @@ describe('driver', () => {
 			.send({
 				email: 'driver@test.com',
 				place: 'autotest-place1',
-				time : 'autotest-time12',
+				time : 'autotest-time20',
 				car : 'autotest-car1',
 				guid: 'autotest-tour1'
 			})
