@@ -25,13 +25,13 @@ module.exports = {
 			});
 	},
 	car: (req, res) => {
-		res.render('page/driver/add/car');
+		res.render('page/driver/add/car', { js: 'form' });
 	},
 	place: (req, res) => {
-		res.render('page/driver/add/place');
+		res.render('page/driver/add/place', { js: 'form' });
 	},
 	time: (req, res) => {
-		res.render('page/driver/add/time');
+		res.render('page/driver/add/time', { js: 'form' });
 	},
 	create: (req, res) => {
 		const email = res.locals.session;

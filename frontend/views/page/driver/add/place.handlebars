@@ -7,11 +7,11 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="container">
-                <form method="POST" action="/driver/create/place">
+                <form id="theForm" method="POST" action="/driver/create/place">
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Namn</label>
                         <div class="col-sm-10">
-                            <input class="form-control" name="name" id="name" placeholder="Namn på stället">
+                            <input class="form-control" name="name" id="name" placeholder="Namn på stället" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -20,23 +20,6 @@
                             <input class="form-control" name="description" id="description" placeholder="Beskriv haket">
                         </div>
                     </div>
-                    <!--<fieldset class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Typ</label>
-                        <div class="col-sm-10">
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="type" id="gridRadios1" value="thai" checked>
-                                    Thai
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="type" id="gridRadios2" value="kina">
-                                    Kina
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>-->
                     <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                             <div class="btn btn-danger" onClick="window.location.href='/driver'">Avbryt</div>

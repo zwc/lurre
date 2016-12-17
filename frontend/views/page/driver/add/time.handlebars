@@ -7,11 +7,11 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="container">
-                <form method="POST" action="/driver/create/time">
+                <form id="theForm" method="POST" action="/driver/create/time">
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Klockslag</label>
                         <div class="col-sm-10">
-                            <input class="form-control" name="time" id="time" placeholder="hh:mm">
+                            <input class="form-control" type="time" name="time" id="time" placeholder="hh:mm" required>
                         </div>
                     </div>
                     <div class="form-group row">

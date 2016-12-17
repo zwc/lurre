@@ -7,23 +7,23 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="container">
-                <form method="POST" action="/driver/create/car">
+                <form id="theForm" method="POST" action="/driver/create/car">
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Namn</label>
                         <div class="col-sm-10">
-                            <input class="form-control" name="name" id="name" placeholder="Namn på bilen">
+                            <input class="form-control" name="name" id="name" placeholder="Namn på bilen" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Platser framsäte</label>
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Antal platser framsäte</label>
                         <div class="col-sm-10">
-                            <input class="form-control" name="seatsForward" id="seatsForward" placeholder="Antal platser fram">
+                            <input class="form-control" name="seatsForward" type="number" id="seatsForward" placeholder="Antal platser fram" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Platser baksäte</label>
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Antal platser baksäte</label>
                         <div class="col-sm-10">
-                            <input class="form-control" name="seatsBack" id="seatsBack" placeholder="Antal platser i baksätet">
+                            <input class="form-control" name="seatsBack" type="number" id="seatsBack" placeholder="Antal platser i baksätet" required>
                         </div>
                     </div>
                     <div class="form-group row">
