@@ -5,6 +5,7 @@ const expressApp = express();
 const bodyParser = require('body-parser');
 const compress = require('compression');
 const moment = require('moment');
+moment.locale('sv');
 const session = require('./middleware/session');
 
 expressApp.disable('x-powered-by');

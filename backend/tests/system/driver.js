@@ -8,9 +8,10 @@ describe('driver', () => {
 		request.post('/driver')
 			.send({
 				email: 'driver@test.com',
-				place: 'place',
-				time : '12:00',
-				car : 'seats2-2'
+				place: 'autotest-place1',
+				time : 'autotest-time12',
+				car : 'autotest-car1',
+				guid: 'autotest-tour1'
 			})
 			.expect(200)
 			.end((err, res) => {

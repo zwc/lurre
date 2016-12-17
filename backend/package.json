@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha tests/system"
+    "test": "mocha tests/system"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
     "body-parser": "^1.15.2",
     "highland": "^2.10.1",
     "lodash": "^4.17.2",
+    "moment": "^2.17.1",
     "redis": "^2.6.3",
     "uuid": "^3.0.1"
   },

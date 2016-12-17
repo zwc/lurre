@@ -5,7 +5,7 @@
     <div class="jumbotron">
         <div class="container">
             <h1>Du ska köra!</h1>
-            <p>Det bär av till {{driver.place.name}} kl {{driver.time.time}}, du har X passagerare.</p>
+            <p>Det bär av till {{driver.place.name}} kl {{driver.time.time}}, du har {{passengers.length}} passagerare.</p>
         </div>
     </div>
 {{/if}}
@@ -18,3 +18,25 @@
     </div>
 </div>
 {{/if}}
+
+<div class="row">
+    <div class="col-md-offset-2 col-lg-8">
+        <table class="table table-striped">
+            <tr>
+                <th>Passagerare</th>
+                <th>Säte</th>
+                <th>Anmälde sig</th>
+            </tr>
+            {{#passengers}}
+                <tr {{#ifCond email ../session}}class="success"{{/ifCond}}>
+                    <td>{{name}}</td>
+                    <td>
+                        {{#ifCond seat 'back'}}Baksäte{{/ifCond}}
+                        {{#ifCond seat 'front'}}Framsäte{{/ifCond}}
+                    </td>
+                    <td>{{moment timestamp}}</td>
+                </tr>
+            {{/passengers}}
+        </table>
+    </div>
+</div>

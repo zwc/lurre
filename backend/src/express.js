@@ -7,6 +7,8 @@ const uuid = require('uuid');
 const client = redis.createClient();
 const app = express();
 
+const account = require('./service/account');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -28,6 +30,7 @@ app.post('/driver', (req, res) => {
 	const place = req.body.place;
 	const time = req.body.time;
 	const car = req.body.car;
+	const guid = req.body.guid || uuid.v4();
 
 	H([
 		`lurre:place:${email}:${place}`,
@@ -41,7 +44,6 @@ app.post('/driver', (req, res) => {
 			return iterator;
 		})
 		.apply(data => {
-			const guid = uuid.v4();
 			data.guid = guid;
 			client.set(`lurre:driver:${guid}:${email}`, JSON.stringify(data), (err) => {
 				res.json({ success: !!!err });
@@ -53,7 +55,7 @@ app.post('/place/create', (req, res) => {
 	const email = req.body.email;
 	const name = req.body.name;
 	const description = req.body.description;
-	const guid = uuid.v4();
+	const guid = req.body.guid || uuid.v4();
 	client.set(`lurre:place:${email}:${guid}`, JSON.stringify({name, description }), (err) => {
 		res.json({ success: !!!err });
 	});
@@ -62,7 +64,7 @@ app.post('/place/create', (req, res) => {
 app.post('/time/create', (req, res) => {
 	const email = req.body.email;
 	const time = req.body.time;
-	const guid = uuid.v4();
+	const guid = req.body.guid || uuid.v4();
 	client.set(`lurre:time:${email}:${guid}`, JSON.stringify({time}), (err) => {
 		res.json({ success: !!!err });
 	});
@@ -73,7 +75,7 @@ app.post('/car/create', (req, res) => {
 	const name = req.body.name;
 	const seatsForward = req.body.seatsForward;
 	const seatsBack = req.body.seatsBack;
-	const guid = uuid.v4();
+	const guid = req.body.guid || uuid.v4();
 	client.set(`lurre:car:${email}:${guid}`, JSON.stringify({name, seatsForward, seatsBack}), (err) => {
 		res.json({ success: !!!err });
 	});
@@ -159,6 +161,23 @@ app.get('/list', (req, res) => {
 		});
 });
 
+const getPassengersByGuid = (guid) => {
+	return H([`lurre:passenger:${guid}:*`])
+		.flatMap(keys)
+		.flatMap(H)
+		.flatMap(getByKey)
+		.flatMap(account.getAccountDetails)
+		.collect();
+};
+
+app.get('/passenger', (req, res) => {
+	const guid = req.query.guid;
+	getPassengersByGuid(guid)
+		.apply(passengers => {
+			res.json(passengers);
+		});
+});
+
 app.post('/passenger', (req, res) => {
 	const email = req.body.email;
 	const guid = req.body.guid;
@@ -186,35 +205,6 @@ app.delete('/passenger', (req, res) => {
 	});
 });
 
-const getPassengersByGuid = (guid) => {
-	return H([`lurre:passenger:${guid}:*`])
-		.flatMap(keys)
-		.flatMap(getByKey)
-		.collect();
-};
-
-app.get('/plan', (req, res) => {
-	const email = req.query.email;
-	H([
-		`lurre:driver:*:${email}`,
-		`lurre:passenger:*:${email}`
-	])
-		.flatMap(keys)
-		.flatMap(H)
-		.flatMap(getKey)
-		.reduce({}, (iterator, obj) => {
-			const key = Object.keys(obj).pop();
-			iterator[key] = obj[key];
-			return iterator;
-		})
-		.apply(response => {
-			const guid = _.get(response, 'driver.guid') || _.get(response, 'passenger.guid');
-			getPassengersByGuid(guid)
-				.apply(passengers => {
-					response.passengers = passengers;
-					res.json(response);
-				});
-		});
-});
+app.get('/plan', require('./passenger/list'));
 
 module.exports = app;

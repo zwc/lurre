@@ -10,7 +10,8 @@ describe('resources', () => {
 				.send({
 					email: 'driver@test.com',
 					name: 'Sunkhak',
-					description: 'Pizza'
+					description: 'Pizza',
+					guid: 'autotest-place1'
 				})
 				.expect(200)
 				.end((err, res) => {
@@ -22,7 +23,8 @@ describe('resources', () => {
 			request.post('/time/create')
 				.send({
 					email: 'driver@test.com',
-					time: '12:00'
+					time: '12:00',
+					guid: 'autotest-time12'
 				})
 				.expect(200)
 				.end((err, res) => {
@@ -36,7 +38,8 @@ describe('resources', () => {
 					email: 'driver@test.com',
 					name: 'Pärlan',
 					seatsForward: 2,
-					seatsBack: 4
+					seatsBack: 4,
+					guid: 'autotest-car1'
 				})
 				.expect(200)
 				.end((err, res) => {
